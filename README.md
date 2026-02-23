@@ -2,44 +2,45 @@
 
 ## Overview
 
-An A/B testing analysis using a marketing dataset (~590k users) to answer:
+An A/B testing analysis using a marketing dataset (~590k users) to answer:  
 **Is a commercial advertisement ('ad') more effective than a Public Service Announcement ('psa') in driving conversions?**
 
-This project showcases Product Analyst skills: experimental design, statistical testing, visualization, and business recommendations.
+This project showcases Product Analyst skills: experiment design, statistical testing, visualization, power analysis, and actionable business recommendations.
 
 **Business Question**  
-Does the 'ad' variant provide a significant lift? What is the estimated revenue impact if rolled out?
+Does the 'ad' variant provide a significant lift? How reliable is the result (power)? What is the estimated revenue impact if rolled out?
 
 **Dataset**
 
-- Source: Kaggle - Marketing A/B Testing (test group, converted, total ads, most ads day/hour).
+- Source: Kaggle - Marketing A/B Testing
+- Key columns: test group ('ad'/'psa'), converted (0/1), total ads, most ads day/hour
 - Link: [kaggle.com/datasets/faviovaz/marketing-ab-testing](https://www.kaggle.com/datasets/faviovaz/marketing-ab-testing)
 
-## Key Findings (Spoiler dari analisis)
+## Key Findings
 
-- Conversion rate 'ad': ~2.55% vs 'psa': ~1.79% → lift ~42% (statistically significant, p < 0.01 via Chi-Square).
-- Effect Size: Small (Cohen’s $h \approx 0.036$), but highly powerful due to the large sample size.
-- Peak Timing: Fridays and the 15:00–20:00 window show higher conversion rates.
-- Frequency: Conversion increases with exposure up to ~20–30 ads, followed by diminishing returns.
+- Conversion rate: 'ad' ~2.55% vs 'psa' ~1.79% → **relative lift ~42%**
+- Statistically significant (p < 0.01 via Chi-Square)
+- Effect size: Small (Cohen’s h ≈ 0.036), but **post-hoc power ~0.99** (well-powered due to large sample size) → hasil sangat reliable
+- Peak timing: Fridays and hours 15:00–20:00 show highest conversion
+- Frequency: Conversion rises with more ads up to ~20–30, then diminishing returns (plateau/over-exposure risk)
 
 ## Tech Stack & Tools
 
-- Python 3.10 (via Conda env `ab_testing`)
-- Libraries: pandas, numpy, scipy, statsmodels, matplotlib, seaborn, jupyter
-- Statistical tests: Chi-Square (primary), ANOVA + Tukey post-hoc, power analysis
-- Visualization: seaborn barplot, heatmap, CI error bars
+- Python 3.10 (Conda env `ab_testing`)
+- Core libraries: pandas, numpy, scipy, statsmodels, matplotlib, seaborn, jupyter
+- Tests: Chi-Square (primary), ANOVA, post-hoc power analysis (TTestIndPower)
+- Visualization: Bar plots with CI, heatmaps, binned frequency charts
 
 ## Folder Structure
 
 ab_testing/
 ├── data/
 │ ├── raw/ # marketing_AB.csv
-│ └── processed/ # (jika ada cleaned data)
+│ └── processed/ # (optional cleaned data)
 ├── notebooks/
-│ └── ab_testing_analysis.ipynb # notebook utama analisis
-├── images/ # exported charts untuk README
-├── results/ # (opsional: tabel hasil, CSV export)
-├── environment.yml # Conda environment specification
+│ └── ab_testing_analysis.ipynb # full analysis + power post-hoc
+├── images/ # exported charts
+├── environment.yml # Conda env spec
 ├── .gitignore
 └── README.md
 
@@ -51,31 +52,46 @@ ab_testing/
 4. Activate denvironment
 5. Open VSC
 6. Open Notebook `notebooks/ab_testing_analysis.ipynb`
-
 7. Run all cells (pastikan dataset ada di `data/raw/marketing_AB.csv`).
 
-## Results Highlights
+### Results Highlights
 
-<image-card alt="Conversion by Group" src="images/conversion_by_group_ci.png" ></image-card>
-<image-card alt="By Day" src="images/conversion_by_day.png" ></image-card>
-<image-card alt="Heatmap Hour" src="images/heatmap_hour.png" ></image-card>
+![Conversion Rate by Group with 95% CI](images/conversion_by_group_ci.png)
+
+![Conversion Rate by Most Ads Day](images/conversion_by_day.png)
+
+![Conversion Rate Heatmap by Hour](images/heatmap_hour.png)
+
+![Conversion by Total Ads Binned (<50)](images/conversion_by_ads_bin.png)
 
 ## Recommendation (Product Perspective)
 
-- **Roll out 'ad' variant** → lift signifikan, meski effect size kecil, volume user besar → impact revenue material.
-  -Full Rollout of 'Ad' Variant Conversion lift of ~42% (1.79% PSA vs. 2.55% Ad), $p < 0.01$, with high statistical power.
-  -Estimated Impact: Potential monthly revenue increase of ~Rp 760M (based on 1M users/mo at Rp 100k AOV).
-  -Optimize Exposure Scheduling Prioritize Fridays and peak hours (15:00–20:00) as identified by heatmap analysis.
-  -Prevent Over-Frequency Conversion flattens after 30–40 ads. Set a frequency cap (e.g., max 30 ads/week) to avoid ad fatigue and diminishing returns.
-  -Next Steps Test lift across user segments (New vs. Returning) and monitor long-term retention/LTV post-rollout.
+- **Roll out 'ad' variant fully**  
+  Lift ~42% (1.79% → 2.55%), p < 0.01, **post-hoc power ~0.99** → decision sangat reliable.  
+  Estimated impact (hypothetical): ~Rp 760 juta/month revenue lift (asumsi 1 juta users/mo, AOV Rp 100k).
 
-## Status Project
+- **Optimize scheduling**  
+  Prioritaskan **Jumat** dan jam **15:00–20:00** (dari heatmap & ANOVA).
+
+- **Frequency capping**  
+  Conversion naik sampai ~20–30 ads/user, lalu flattening.  
+  Set cap max 30 ads/user/minggu untuk hindari ad fatigue & potensi penurunan engagement jangka panjang.
+
+- **Next experiments**
+- Segmentasi: Test lift di new vs returning users
+- Variant testing: Creative ad berbeda atau CTA variasi
+- Monitor post-rollout: Retention, LTV, churn rate
+
+**Kesimpulan singkat**: 'ad' jelas winner → roll out segera dengan scheduling & frequency optimization untuk maksimalkan ROI.
+
+## Project Status
 
 - [x] Data loading & cleaning
 - [x] EDA & group comparison
-- [x] Statistical tests lengkap (chi-square, ANOVA, power)
-- [x] Visualisasi
+- [x] Statistical tests (Chi-Square, ANOVA)
+- [x] Post-hoc power analysis
+- [x] Visualizations
 - [x] Business impact estimation
-- [x] Final README
+- [x] README polish
 
 Feel free to fork / star! 🚀
