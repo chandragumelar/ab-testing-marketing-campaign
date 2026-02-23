@@ -186,3 +186,4 @@ dependencies:
       - mypy-extensions==1.1.0
       - pathspec==1.0.4
       - pytokens==0.4.1
+prefix: /opt/miniconda3/envs/ab_testing
