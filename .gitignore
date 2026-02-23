@@ -1,0 +1,41 @@
+# Python / Conda
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Jupyter / Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# Conda environments (jangan commit env itu sendiri)
+environment.yml  # ← ini opsional, kalau lo mau commit yml ya boleh, tapi biasanya ya commit
+# Tapi kalau lo commit environment.yml, hapus baris di atas
+
+# Data files (besar/sensitif)
+data/raw/*.csv
+data/raw/*.zip
+data/processed/*
+!data/raw/marketing_AB.csv   # kalau lo mau allow dataset kecil ini, uncomment
+
+# Mac system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code settings (personal)
+.vscode/*
+!.vscode/settings.json   # kalau lo mau share settings.json, keep ini
+!.vscode/extensions.json
+
+# Logs & temp
+*.log
+tmp/
+temp/
