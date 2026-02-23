@@ -58,9 +58,9 @@ ab_testing/
 
 ## Results Highlights
 
-- ![Conversion by Group](images/conversion_by_group.png)
-- ![Conversion by Day](images/conversion_by_day.png)
-- ![Heatmap by Hour & Group](images/segmentation_heatmap.png)
+<image-card alt="Conversion by Group" src="images/conversion_by_group_ci.png" ></image-card>
+<image-card alt="By Day" src="images/conversion_by_day.png" ></image-card>
+<image-card alt="Heatmap Hour" src="images/heatmap_hour.png" ></image-card>
 
 ## Recommendation (Product Perspective)
 
