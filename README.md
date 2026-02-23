@@ -2,27 +2,25 @@
 
 ## Overview
 
-Project analisis A/B testing menggunakan dataset marketing campaign (~590k users) untuk menjawab pertanyaan:  
-**Apakah menampilkan iklan sebenarnya ('ad') lebih efektif daripada Public Service Announcement ('psa') dalam meningkatkan conversion rate (pembelian produk)?**
+An A/B testing analysis using a marketing dataset (~590k users) to answer:
+**Is a commercial advertisement ('ad') more effective than a Public Service Announcement ('psa') in driving conversions?**
 
-Ini adalah showcase skill Product Analyst: dari experiment design, statistical testing, visualisasi, sampai business recommendation.
+This project showcases Product Analyst skills: experimental design, statistical testing, visualization, and business recommendations.
 
 **Business Question**  
-Apakah variasi 'ad' memberikan lift signifikan di conversion rate? Berapa estimasi impact revenue jika di-rollout?
+Does the 'ad' variant provide a significant lift? What is the estimated revenue impact if rolled out?
 
 **Dataset**
 
-- Sumber: Kaggle - Marketing A/B Testing
-- Kolom utama: test group ('ad' vs 'psa'), converted (0/1), total ads, most ads day, most ads hour
+- Source: Kaggle - Marketing A/B Testing (test group, converted, total ads, most ads day/hour).
 - Link: [kaggle.com/datasets/faviovaz/marketing-ab-testing](https://www.kaggle.com/datasets/faviovaz/marketing-ab-testing)
 
 ## Key Findings (Spoiler dari analisis)
 
 - Conversion rate 'ad': ~2.55% vs 'psa': ~1.79% → lift ~42% (statistically significant, p < 0.01 via Chi-Square).
-- Effect size kecil (Cohen's h ~0.036), tapi karena sample besar → powerful.
-- Hari dengan most ads: Friday cenderung conversion lebih tinggi.
-- Jam peak: sekitar 15-20 punya conversion lebih baik.
-- Semakin banyak ads dilihat (sampai ~20-30), conversion naik (diminishing returns setelahnya).
+- Effect Size: Small (Cohen’s $h \approx 0.036$), but highly powerful due to the large sample size.
+- Peak Timing: Fridays and the 15:00–20:00 window show higher conversion rates.
+- Frequency: Conversion increases with exposure up to ~20–30 ads, followed by diminishing returns.
 
 ## Tech Stack & Tools
 
@@ -65,17 +63,19 @@ ab_testing/
 ## Recommendation (Product Perspective)
 
 - **Roll out 'ad' variant** → lift signifikan, meski effect size kecil, volume user besar → impact revenue material.
-- Optimize scheduling: prioritaskan hari Jumat & jam 15-20.
-- Monitor long-term: potential fatigue kalau total ads terlalu tinggi (>30).
-- Next step: segmentasi user (new vs returning), A/B test lanjutan dengan variasi creative.
+  -Full Rollout of 'Ad' Variant Conversion lift of ~42% (1.79% PSA vs. 2.55% Ad), $p < 0.01$, with high statistical power.
+  -Estimated Impact: Potential monthly revenue increase of ~Rp 760M (based on 1M users/mo at Rp 100k AOV).
+  -Optimize Exposure Scheduling Prioritize Fridays and peak hours (15:00–20:00) as identified by heatmap analysis.
+  -Prevent Over-Frequency Conversion flattens after 30–40 ads. Set a frequency cap (e.g., max 30 ads/week) to avoid ad fatigue and diminishing returns.
+  -Next Steps Test lift across user segments (New vs. Returning) and monitor long-term retention/LTV post-rollout.
 
 ## Status Project
 
 - [x] Data loading & cleaning
 - [x] EDA & group comparison
-- [ ] Statistical tests lengkap (chi-square, ANOVA, power)
-- [ ] Visualisasi pro
-- [ ] Business impact estimation
-- [ ] Final README polish
+- [x] Statistical tests lengkap (chi-square, ANOVA, power)
+- [x] Visualisasi
+- [x] Business impact estimation
+- [x] Final README
 
-Feel free to fork / star kalau berguna! 🚀
+Feel free to fork / star! 🚀
