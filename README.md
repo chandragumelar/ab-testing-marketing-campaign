@@ -46,6 +46,7 @@ ab-testing-marketing-campaign/          # Nama repo/root project
 ├── .gitignore                          # Ignore files sampah
 ├── requirements.txt                    # Backup pip dependencies
 └── README.md                           # Dokumen ini
+```
 
 ## Setup & Reproduce
 
@@ -98,4 +99,3 @@ ab-testing-marketing-campaign/          # Nama repo/root project
 - [x] README polish
 
 Feel free to fork / star! 🚀
-```
