@@ -33,16 +33,19 @@ Does the 'ad' variant provide a significant lift? How reliable is the result (po
 
 ## Folder Structure
 
-ab_testing/
+```text
+ab-testing-marketing-campaign/          # Nama repo/root project
 ├── data/
-│ ├── raw/ # marketing_AB.csv
-│ └── processed/ # (optional cleaned data)
+│   ├── raw/
+│   │   └── marketing_AB.csv            # Dataset asli dari Kaggle
+│   └── processed/                      # (opsional: data yang sudah di-clean)
 ├── notebooks/
-│ └── ab_testing_analysis.ipynb # full analysis + power post-hoc
-├── images/ # exported charts
-├── environment.yml # Conda env spec
-├── .gitignore
-└── README.md
+│   └── ab_testing_analysis.ipynb       # Notebook utama: analisis lengkap + power post-hoc
+├── images/                             # Exported charts dari notebook
+├── environment.yml                     # Spec Conda environment (untuk recreate env)
+├── .gitignore                          # Ignore files sampah
+├── requirements.txt                    # Backup pip dependencies
+└── README.md                           # Dokumen ini
 
 ## Setup & Reproduce
 
@@ -66,15 +69,15 @@ ab_testing/
 
 ## Recommendation (Product Perspective)
 
-- **Roll out 'ad' variant fully**  
-  Lift ~42% (1.79% → 2.55%), p < 0.01, **post-hoc power ~0.99** → decision sangat reliable.  
+- **Roll out 'ad' variant fully**
+  Lift ~42% (1.79% → 2.55%), p < 0.01, **post-hoc power ~0.99** → decision sangat reliable.
   Estimated impact (hypothetical): ~Rp 760 juta/month revenue lift (asumsi 1 juta users/mo, AOV Rp 100k).
 
-- **Optimize scheduling**  
+- **Optimize scheduling**
   Prioritaskan **Jumat** dan jam **15:00–20:00** (dari heatmap & ANOVA).
 
-- **Frequency capping**  
-  Conversion naik sampai ~20–30 ads/user, lalu flattening.  
+- **Frequency capping**
+  Conversion naik sampai ~20–30 ads/user, lalu flattening.
   Set cap max 30 ads/user/minggu untuk hindari ad fatigue & potensi penurunan engagement jangka panjang.
 
 - **Next experiments**
@@ -95,3 +98,4 @@ ab_testing/
 - [x] README polish
 
 Feel free to fork / star! 🚀
+```
