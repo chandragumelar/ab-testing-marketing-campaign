@@ -15,11 +15,11 @@ build/
 .ipynb_checkpoints/
 *.ipynb_checkpoints/
 
-# Conda environments (jangan commit env itu sendiri)
-environment.yml  # ← ini opsional, kalau lo mau commit yml ya boleh, tapi biasanya ya commit
-# Tapi kalau lo commit environment.yml, hapus baris di atas
+# Conda environments 
+environment.yml  # ← optional
 
-# Data files (besar/sensitif)
+
+# Data files (big/sensitif)
 # data/raw/*.csv
 data/raw/*.zip
 data/processed/*
